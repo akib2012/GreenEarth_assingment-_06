@@ -1,11 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- tailwind and daijyui cnd -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- googgle font cdn here -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- link extarnal css -->
+    <link rel="stylesheet" href="style.css">
+    <!-- link favicon here -->
+    <link rel="shortcut icon" href="./assets/palm-tree.png" type="image/x-icon">
+
     <title>Green-Earth||assinment-06</title>
 </head>
+
 <body>
-    <h2>hello assingments</h2>
+    <!-- <h2 class="text-7xl">hello assingments 🌴</h2> -->
+    <!-- header sctions starts here -->
+    <header class="bg-[#15803D]">
+        <div class="navbar bg-base-100 shadow-sm text-white max-w-11/12 mx-auto bg-[#15803D] ">
+            <div class="navbar-start">
+                <div class="dropdown">
+                    <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h8m-8 6h16" />
+                        </svg>
+                    </div>
+                    <ul tabindex="0"
+                        class="menu menu-sm dropdown-content bg-[#CFF0DC] rounded-box z-1 mt-3 w-32 p-2 shadow">
+                        <li class="text-black"><a>Gallery</a></li>
+                        <li class="text-black"><a>Gallery</a></li>
+                        <li class="text-black"><a>Plant a Tree</a></li>
+                    </ul>
+                </div>
+                <a class="btn btn-ghost text-xl"><span class="text-3xl">🌴</span>
+                    <h3>Green Earth</h3>
+                </a>
+            </div>
+            <div class="navbar-center hidden lg:flex">
+                <ul class="menu menu-horizontal px-1">
+                    <li><a>About</a></li>
+                    <li><a>Gallery</a></li>
+
+                    <li><a>Plant a Tree</a></li>
+                </ul>
+            </div>
+            <div class="navbar-end">
+                <a class="btn w-[115px] h-[15] bg-[#FACC15] rounded-2xl text-[#15803D] text-[14px]">Plant a Tree</a>
+            </div>
+        </div>
+
+    </header>
+
+    <!-- main section starts here -->
+
+    <main>
+        <section class="banner flex items-center justify-center gap-[100px] bg-[#CFF0DC] pt-[20px] ">
+            <img src="./assets/hero-leaf1.png" alt="left leaf" class="banner-img hidden sm:block">
+            <div class="banner-conten text-center pb-[20px]">
+                <h2 class="banner-heading text-4xl font-bold">Plant a Tree, Grow a Future</h2>
+                <p class="banner-p text-[14px] text-[#1F2937] py-[20px]">Join our mission to plant 1 million trees and
+                    make the Earth greener for future
+                    generations.</p>
+                <a class="btn w-[125px] h-[15] bg-[#FACC15] rounded-2xl text-[#15803D]">Get Involved</a>
+            </div>
+            <img src="./assets/hero-leaf2.png" alt="" class="hidden sm:block">
+        </section>
+
+        <!-- cards sction remaining here -->
+
+
+        <!-- camping sction here -->
+        <section class="camping-part bg-[#E8EEE2] pt-[100px] pb-[30px] ">
+            <div class="inner-camping max-w-7/12 mx-auto">
+                <h3 class="text-center text-black text-3xl font-semibold">About the Campaign</h3>
+                <div class="mian-part flex flex-col sm:flex-row items-center mt-[40px] gap-[30px]">
+                    <div class=" ">
+                        <img src="./assets/about.png" alt="" class="max-w-full max-h-full sm:max-w-[500px] ">
+                    </div>
+                    <div class="camping-description text-[#1F2937] text-[14px]">
+                        <p>Green Earth is a global tree plantation initiative dedicated to fighting climate change.
+                            Since our start, we’ve planted over 500,000 trees worldwide. By joining our campaign, you
+                            help restore forests, create habitats for wildlife, and combat global warming.</p>
+                        <ul class="list-disc ml-[20px] mt-[20px] text-[#1F2937] text-[14px]">
+                            <li>Improvement of air quality</li>
+                            <li>Support for local communities</li>
+                            <li>Restoration of natural habitats</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- impact sections here -->
+        <section class="impact  bg-[#CFF0DC]">
+            <div class="w-11/12 mx-auto">
+                <h3 class="text-center py-[50px] text-3xl font-semibold">Our Impact</h3>
+                <div class="flex justify-between items-center gap-[30px]">
+                    <div class="impat-card w-[5000px] h-[150px] bg-white rounded-2xl flex flex-col justify-center items-center">
+                        <h2 class="impact-title text-[#15803D] text-3xl font-bold mb-[10px]">500K+</h2>
+                        <p class="impact-per text-gray-500">Trees Planted</p>
+                    </div>
+                    <div class="impat-card w-[5000px] h-[150px] bg-white rounded-2xl flex flex-col justify-center items-center">
+                        <h2 class="impact-title text-[#15803D] text-3xl font-bold mb-[10px]">120+</h2>
+                        <p class="impact-per text-gray-500">Communities Involved</p>
+                    </div>
+                    <div class="impat-card w-[5000px] h-[150px] bg-white rounded-2xl flex flex-col justify-center items-center">
+                        <h2 class="impact-title text-[#15803D] text-3xl font-bold mb-[10px]">30+</h2>
+                        <p class="impact-per text-gray-500">Countries Reached</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
 </body>
+
 </html>
