@@ -181,7 +181,7 @@ const billingcardsshows = (cards) => {
 
 /* delet the bill cards */
 function removedata(cardDiv, price) {
-    alert("remove card!");
+    // alert("remove card!");
     cardDiv.remove(); 
     const totalPriceEl = document.getElementById("total_price");
     totalPriceEl.innerText = Number(totalPriceEl.innerText) - Number(price);
