@@ -59,7 +59,7 @@ const allplantsdisplay = (allplants) => {
     for (let allplant of allplants) {
         // console.log(allplant); /////
         const newplantcard = document.createElement("div");
-        newplantcard.innerHTML = ` <div class="card bg-base-100 w-96 shadow-sm m-[10px] p-[10px] max-h-[450px]" id="plats_card">
+        newplantcard.innerHTML = ` <div class="card bg-base-100 w-96 shadow-sm mx-[7px] my-[10px] sm:m-[10px] p-[8px] sm:p-[10px] max-h-[450px]" id="plats_card">
         <figure clas="h-[340px]">
             <img src="${allplant.image}" alt="Shoes"/>
         </figure>
@@ -157,7 +157,7 @@ const billingcardsshows = (cards) => {
 
     document.getElementById("total_price").innerText = finalPrice;
 
-    newCard.innerHTML = `<div  class="w-[200px] h-[70px] bg-[#f5faf1] mx-auto rounded-xl flex justify-between items-center px-[7px] mb-[20px]">
+    newCard.innerHTML = `<div  class=" w-[280px] sm:w-[170px] h-[70px] bg-[#f5faf1] mx-auto rounded-xl flex justify-between items-center px-[7px] mb-[20px]">
                             <div class="left">
                                 <h3>${cards.name}</h3>
                                 <p class="text-gray-400">৳ <span>${cards.price}</span> x <span>1</span></p>
