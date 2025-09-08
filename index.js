@@ -24,15 +24,37 @@ const displayCategori = (allcategoris) => {
 
 }
 
+/* **spinner manager here* */
+
+const managespinner = (status) => {
+    if (status === true) {
+        document.getElementById("spinner").classList.remove("hidden");
+        document.getElementById("plats_cntainer").classList.add("hidden");
+    } else {
+        document.getElementById("plats_cntainer").classList.remove("hidden");
+        document.getElementById("spinner").classList.add("hidden");
+
+    }
+}
+
+
+
+
 /* all trees load and shows here */
 
 const loadalltrees = () => {
+    managespinner(true);
     fetch("https://openapi.programming-hero.com/api/plants")
         .then(Response => Response.json())
-        .then(allplants => allplantsdisplay(allplants.plants))
+        .then(data => {
+
+            allplantsdisplay(data.plants);
+
+        })
 }
 
 const allplantsdisplay = (allplants) => {
+    // console.log(allplants);
     const plat_card = document.getElementById("plats_cntainer");
     for (let allplant of allplants) {
         // console.log(allplant); /////
@@ -52,15 +74,21 @@ const allplantsdisplay = (allplants) => {
             </div>
         </div>
         <div
-            class="card-foot flex justify-center items-center w-[330px] bg-[#15803D] mx-auto mb-[20px] h-[30px] text-white rounded-2xl py-[5px]" id="id_allplats">
-            <button id="addtocard_btn" type="button">Add to Cart</button>
+            class="card-foot addtocard_btn flex justify-center items-center w-[330px] bg-[#15803D] mx-auto mb-[20px] h-[30px] text-white rounded-2xl py-[5px]" id="id_allplats">
+            <button  type="button">Add to Cart</button>
         </div>
     </div>`;
+        newplantcard.querySelectorAll(".addtocard_btn").forEach(btn => {
+            btn.addEventListener("click", function () {
+                billingcardsshows(allplant);
+                // console.log(btn)
+            });
+        });
 
-    
+
         plat_card.appendChild(newplantcard);
+        managespinner(false);
     }
-    
 
 }
 
@@ -68,6 +96,7 @@ const allplantsdisplay = (allplants) => {
 /* load al plants and shows them */
 
 const plantsshows = (id) => {
+    managespinner(true);
     fetch(`https://openapi.programming-hero.com/api/category/${id}`)
         .then(respos => respos.json())
         .then(platsviews => showallplantes(platsviews.plants))
@@ -96,35 +125,89 @@ const showallplantes = (plants) => {
             </div>
         </div>
         <div
-            class="card-foot flex justify-center items-center w-[330px] bg-[#15803D] mx-auto mb-[20px] h-[30px] text-white rounded-2xl py-[5px]">
-            <button id="addtocard_btn" type="button ">Add to Cart</button>
+            class="card-foot addtocard_btn flex justify-center items-center w-[330px] bg-[#15803D] mx-auto mb-[20px] h-[30px] text-white rounded-2xl py-[5px]">
+            <button  type="button ">Add to Cart</button>
         </div>
     </div>`;
+        newplantcard.querySelectorAll(".addtocard_btn").forEach(btn => {
+            btn.addEventListener("click", function () {
+                billingcardsshows(plat);
+                // console.log(btn)
+            });
+        });
         plat_card.appendChild(newplantcard);
+        managespinner(false);
 
     }
 }
 
+/*  here billing card showing  */
+
+const billingcardsshows = (cards) => {
+    // console.log(cards);
+    alert("plant added !!");
+    const myCard = document.getElementById("my_card");
+    const newCard = document.createElement("div");
+    const tottalprice = document.getElementById("total_price").innerText;
+
+    const treePrice = cards.price;
+
+
+    const finalPrice = Number(tottalprice) + Number(treePrice);
+
+    document.getElementById("total_price").innerText = finalPrice;
+
+    newCard.innerHTML = `<div  class="w-[200px] h-[70px] bg-[#f5faf1] mx-auto rounded-xl flex justify-between items-center px-[7px] mb-[20px]">
+                            <div class="left">
+                                <h3>${cards.name}</h3>
+                                <p class="text-gray-400">৳ <span>${cards.price}</span> x <span>1</span></p>
+                            </div>
+                            <div class="remove-btn">
+                                <i id="remove_card" class="fa-solid fa-xmark"></i>
+                            </div>
+                        </div>`;
+
+    const removeBtn = newCard.querySelector(".remove-btn i");
+    removeBtn.addEventListener("click", function () {
+        removedata(newCard, cards.price);
+    });
+
+    myCard.appendChild(newCard);
+
+
+
+}
+
+
+/* delet the bill cards */
+function removedata(cardDiv, price) {
+    alert("remove card!");
+    cardDiv.remove(); 
+    const totalPriceEl = document.getElementById("total_price");
+    totalPriceEl.innerText = Number(totalPriceEl.innerText) - Number(price);
+}
+
+
 /* modal load and showing here */
-const  showcarddetails = (id) => {
+const showcarddetails = (id) => {
     fetch(`https://openapi.programming-hero.com/api/plant/${id}`)
-    .then(res => res.json())
-    .then(carddetils => showmodal(carddetils))
+        .then(res => res.json())
+        .then(carddetils => showmodal(carddetils))
 }
 
 // modal showing here
 
-const showmodal = (moadls) =>{
+const showmodal = (moadls) => {
     my_modal.showModal();
     const modaldiv = document.getElementById("my_modal");
-    modaldiv.innerHTML = ""; 
+    modaldiv.innerHTML = "";
     const newmodaldiv = document.createElement("div");
-      
+
     newmodaldiv.innerHTML = `<div class="modal-box w-fit h-fit p-[20px]">
             <h3 class="text-2xl font-bold"> ${moadls.plants.name}</h3>
             <img src=" ${moadls.plants.image}" alt="" class="w-full h-[300px] mask-cover mx-auto my-[10px] rounded-3xl">
             <p> <span class="text-lg font-bold">categori:</span> ${moadls.plants.category}</p>
-            <p><span class="text-lg font-bold">proce: </span> ${moadls.plants.price}</p>
+            <p><span class="text-lg font-bold">proce: ৳ </span> ${moadls.plants.price}</p>
             <p ><span class="text-lg font-bold">description:</span> ${moadls.plants.description}</p>
             <div class="modal-action">
                 <form method="dialog">
@@ -133,9 +216,10 @@ const showmodal = (moadls) =>{
                 </form>
             </div>`;
     modaldiv.appendChild(newmodaldiv);
-    
-    
-    
+    console.log(moadls);
+
+
+
 
 }
 
