@@ -64,10 +64,8 @@ const loadalltrees = () => {
 }
 
 const allplantsdisplay = (allplants) => {
-    // console.log(allplants);
     const plat_card = document.getElementById("plats_cntainer");
     for (let allplant of allplants) {
-        // console.log(allplant); /////
         const newplantcard = document.createElement("div");
         newplantcard.innerHTML = ` <div class="card bg-base-100 w-96 shadow-sm mx-[7px] my-[10px] sm:m-[10px] p-[8px] sm:p-[10px] max-h-[450px]" id="plats_card">
         <figure clas="h-[340px]">
@@ -91,7 +89,6 @@ const allplantsdisplay = (allplants) => {
         newplantcard.querySelectorAll(".addtocard_btn").forEach(btn => {
             btn.addEventListener("click", function () {
                 billingcardsshows(allplant);
-                // console.log(btn)
             });
         });
 
@@ -148,7 +145,6 @@ const showallplantes = (plants) => {
         newplantcard.querySelectorAll(".addtocard_btn").forEach(btn => {
             btn.addEventListener("click", function () {
                 billingcardsshows(plat);
-                // console.log(btn)
             });
         });
         plat_card.appendChild(newplantcard);
@@ -160,7 +156,6 @@ const showallplantes = (plants) => {
 /*  here billing card showing  */
 
 const billingcardsshows = (cards) => {
-    // console.log(cards);
     alert("plant added !!");
     const myCard = document.getElementById("my_card");
     const newCard = document.createElement("div");
@@ -232,7 +227,7 @@ const showmodal = (moadls) => {
                 </form>
             </div>`;
     modaldiv.appendChild(newmodaldiv);
-    console.log(moadls);
+    
 
 
 
