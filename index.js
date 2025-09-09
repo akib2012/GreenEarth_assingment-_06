@@ -5,7 +5,17 @@
 const loadcategoris = () => {
     fetch("https://openapi.programming-hero.com/api/categories")
         .then(res => res.json())
-        .then(categories => displayCategori(categories.categories))
+        .then(categories => {
+            
+            displayCategori(categories.categories)
+            
+        })
+}
+
+/* remove all categri button style function */
+const removeStyle = () =>{
+    const remCaterogi  = document.querySelectorAll(".cartegori-class")
+    remCaterogi.forEach(btn => btn.classList.remove("activebtn"))
 }
 
 // display the categories here
@@ -15,7 +25,7 @@ const displayCategori = (allcategoris) => {
 
     for (let categori of allcategoris) {
         const newDiv = document.createElement("div");
-        newDiv.innerHTML = `<div id="plant-catagori-id" onclick="plantsshows(${categori.id})"><h3 class="hover:bg-[#15803D] p-[7px] rounded-xl text-[#1F2937] cursor-pointer">${categori.category_name}</h3> <br></div>`;
+        newDiv.innerHTML = `<div  onclick="plantsshows(${categori.id})"><h3 id="plant-catagori-id-${categori.id}" class="hover:bg-[#15803D] p-[7px] rounded-xl text-[#1F2937] cursor-pointer cartegori-class">${categori.category_name}</h3> <br></div>`;
 
         categorisId.appendChild(newDiv);
 
@@ -99,7 +109,13 @@ const plantsshows = (id) => {
     managespinner(true);
     fetch(`https://openapi.programming-hero.com/api/category/${id}`)
         .then(respos => respos.json())
-        .then(platsviews => showallplantes(platsviews.plants))
+        .then(platsviews => {
+            removeStyle();
+            const clickCategory = document.getElementById(`plant-catagori-id-${id}`)
+            clickCategory.classList.add("activebtn")
+            showallplantes(platsviews.plants)
+        })
+        
 }
 
 //shows the plants card here
@@ -203,7 +219,7 @@ const showmodal = (moadls) => {
     modaldiv.innerHTML = "";
     const newmodaldiv = document.createElement("div");
 
-    newmodaldiv.innerHTML = `<div class="modal-box w-fit h-fit p-[20px]">
+    newmodaldiv.innerHTML = `<div class="modal-box w-fit h-fit p-[20px] mx-[20px] sm:m-[0px]">
             <h3 class="text-2xl font-bold"> ${moadls.plants.name}</h3>
             <img src=" ${moadls.plants.image}" alt="" class="w-full h-[300px] mask-cover mx-auto my-[10px] rounded-3xl">
             <p> <span class="text-lg font-bold">categori:</span> ${moadls.plants.category}</p>

@@ -2,3 +2,12 @@
   font-family: "Inter", sans-serif;
   
 }
+header{
+    background-color: #15803D;
+
+}
+.activebtn{
+  color: white;
+  background-color: #15803D;
+  max-width: 150px;
+}
