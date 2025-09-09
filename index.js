@@ -156,7 +156,7 @@ const showallplantes = (plants) => {
 /*  here billing card showing  */
 
 const billingcardsshows = (cards) => {
-    alert("plant added !!");
+    alert("Card added successfully!");
     const myCard = document.getElementById("my_card");
     const newCard = document.createElement("div");
     const tottalprice = document.getElementById("total_price").innerText;
